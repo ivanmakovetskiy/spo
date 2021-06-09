@@ -1,0 +1,115 @@
+\chapter{ПРАКТИЧЕСКАЯ РАБОТА № 2}
+
+\section{Тема}
+
+Оптимизация кода (свертка констант и $peephole$ $optimization$).
+
+\section{Задание}
+
+Реализовать оптимизацию ассемблерного кода для арифметического выражения из констант и переменных.
+
+\section{Ход выполнения работы}
+
+Реализуем две оптимизации для транслятора, созданного в рамках выполнения предыдущих работ. На уровне $AST$ реализуем так называемую «свертку констант». Свёртка констант--- оптимизация, вычисляющая константные выражения на этапе компиляции. Прежде всего, упрощаются константные выражения, содержащие числовые литералы. Для этого реализуем функцию $Expr.fold()$, которая будет обходить выражение и выполнять свертку путем замены узлов $AST$. Наибольший интерес в этом случае будет представлять свертка унарных и бинарных операций. Для унарных операций будем сначала выполнять свертку операнда, затем, если операнд является константой, будем применять заданную унарную операцию к этой константе и заменять узел унарной операции на узел с константой-результатом свертки. Для бинарных операций будем сначала выполнять свертку левого и правого операнда, затем, если левый и правый операнды являются константами, будем применять к ним заданную бинарную операцию и заменять узел бинарной операции на узел с константой-результатом свертки. 
+
+На уровне генерируемого ассемблерного кода будем выполнять $peephole$-оптимизацию. Локальные $peephole$-оптимизации рассматривают несколько соседних (в терминах одного из графов представления программы) инструкций (как будто <<смотрит в глазок>> на код), чтобы увидеть, можно ли с ними произвести какую-либо трансформацию с точки зрения цели оптимизации. В частности, они могут быть заменены одной инструкцией или более короткой последовательностью инструкций. Будем искать в ассемблерном коде паттерны, которые можно упростить. В генерируемом созданным транслятором коде наиболее часто встречаются следующие паттерны:
+
+\begin{Verbatim}
+push qword [x]
+pop rbx
+\end{Verbatim}
+или
+\begin{Verbatim}
+    push qword <const>
+    pop rbx
+\end{Verbatim}
+или 
+\begin{Verbatim}
+    push rax
+    pop rbx
+\end{Verbatim}
+
+Их можно заменить на
+\begin{Verbatim}
+mov rbx, qword [x]
+mov rbx, qword <const>
+mov rbx, rax
+\end{Verbatim}
+
+Для реализации данной оптимизации нам потребуется хранить генерируемый ассемблерный код. В данном случае будем просто хранить инструкции в виде списка строк. Для этого реализуем класс $InstructionBuffer$. В его экземпляр будут попадать все инструкции, генерируемые транслятором, и в нем же будет осуществляться оптимизация. Основной код оптимизации содержится в методе $performPeepholeOptimization$, вызываемом после каждого добавления новой инструкции в конец буфера. Фрагмент кода буфера, отвечающий за оптимизацию приведен ниже.
+
+Функция $peepholeOptimize$
+
+\begin{Verbatim}
+
+static void peepholeOptimize() {
+	Pattern push = Pattern.compile("\\s*PUSH (.+)");
+	Pattern pop = Pattern.compile("\\s*POP (.+)");
+	for(int i = 0; i < asm.size() - 1; i++) {
+		String instr = asm.get(i);
+		String nextInstr = asm.get(i + 1);
+
+		Matcher m1 = push.matcher(instr);
+		Matcher m2 = pop.matcher(nextInstr);
+		if (m1.matches() && m2.matches()) {
+			String arg1 = m1.group(1);
+			String arg2 = m2.group(1);
+			asm.set(i, "    MOV " + arg2 + ", " + arg1);
+			asm.remove(i + 1);
+		}
+	}	
+}
+
+
+\end{Verbatim}
+
+Функция $foldConstants$
+
+
+\begin{Verbatim}
+public static ExprNode foldConstants(ExprNode node) {
+	if (node instanceof VarNode) {
+		return node;
+	}
+	else if (node instanceof NumberNode) {
+		return node;
+	}
+	else if (node instanceof BinOpNode) {
+		BinOpNode binOp = (BinOpNode) node;
+		ExprNode l = foldConstants(((BinOpNode) node).left);
+		ExprNode r = foldConstants(((BinOpNode) node).right);
+		if (l instanceof NumberNode && r instanceof  NumberNode) {
+
+		int lvalue = Integer.parseInt(((NumberNode) l).number.text);
+		int rvalue = Integer.parseInt(((NumberNode) r).number.text);
+		int result;
+		switch (binOp.op.type) {
+			case ADD:
+				result = lvalue + rvalue;
+				break;
+			case SUB:
+				result = lvalue - rvalue;
+				break;
+			case MUL:
+				result = lvalue * rvalue;
+				break;
+			case DIV:
+				result = lvalue / rvalue;
+				break;
+			default:
+			throw new IllegalStateException("Unexpected value: "
+				+ binOp.op.type);
+		}
+		return new NumberNode(new Token(NUMBER, 
+			Integer.toString(result), binOp.op.pos));
+	} else {
+		return new BinOpNode(binOp.op, l, r);
+	}
+	}
+	throw new IllegalStateException();
+}
+
+\end{Verbatim}
+
+\section{Вывод}
+В ходе проделанной работы было проведено ознакомление с простейшими оптимизациями, реализуемыми при разработке компиляторов и трансляторов. В результате выполнения работы созданный ранее транслятор дополнен двумя оптимизациями: сверткой констант на уровне $AST$ и $peephole$-оптимизацией на уровне генерируемого ассемблерного кода. Полный исходный код реализованной программы доступен по адресу https://github.com/ivanmakovetskiy/spo/blob\\/master/spo-main/lang/CompilerOptimize.java

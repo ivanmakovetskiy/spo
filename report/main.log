@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2021.4.7)  9 JUN 2021 18:55
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2021.4.7)  9 JUN 2021 20:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -498,36 +498,131 @@ Overfull \hbox (4.19278pt too wide) in paragraph at lines 13--14
 
 [3
 
-] [4]) (./2.tex) (./3.tex) (./4.tex)
-
-! LaTeX Error: \begin{itemize} on input line 17 ended by \end{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
+] [4]) (./2.tex [5]
+Глава 2.
+! Undefined control sequence.
+<argument> ...tsize {18}{18}\bfseries \justifying 
                                                   
-l.75 \end{document}
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+l.1 \chapter{ПРАКТИЧЕСКАЯ РАБОТА № 2}
+                                     
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-[5] (./main.aux)
+
+Overfull \hbox (11.0171pt too wide) in paragraph at lines 13--14
+\TU/TimesNewRoman(0)/m/n/14.4 ния, содержащие числовые литералы. Для этого реал
+изуем функцию $\OML/cmm/m/it/14.4 Expr:fold\OT1/cmr/m/n/14.4 ()$\TU/TimesNewRom
+an(0)/m/n/14.4 ,
+ []
+
+[6
+
+] [7] [8] [9]) (./3.tex
+Overfull \hbox (20.81763pt too wide) in paragraph at lines 115--1
+\TU/TimesNewRoman(0)/m/n/14.4 двумя оптимизациями: сверткой констант на уровне 
+$\OML/cmm/m/it/14.4 AST$ \TU/TimesNewRoman(0)/m/n/14.4 и $\OML/cmm/m/it/14.4 pe
+ephole$\TU/TimesNewRoman(0)/m/n/14.4 -оптимизацией
+ []
+
+
+Overfull \hbox (14.67564pt too wide) in paragraph at lines 115--1
+\TU/TimesNewRoman(0)/m/n/14.4 ванной программы доступен по адресу https://githu
+b.com/ivanmakovetskiy/spo/blob 
+ []
+
+[10]
+Глава 3.
+! Undefined control sequence.
+<argument> ...tsize {18}{18}\bfseries \justifying 
+                                                  
+l.1 \chapter{ПРАКТИЧЕСКАЯ РАБОТА № 3}
+                                     
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (20.62837pt too wide) in paragraph at lines 13--16
+[]\TU/TimesNewRoman(0)/m/n/14.4 Объектный файл состоит из секций, каждая секция
+ может содержать несколь-
+ []
+
+
+Overfull \hbox (4.08951pt too wide) in paragraph at lines 18--19
+[]$\OML/cmm/m/it/14.4 :bss$ \TU/TimesNewRoman(0)/m/n/14.4 содержит неинициализи
+рованные глобальные переменные, для нее
+ []
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 23.
+
+[11
+
+] [12] [13] [14]) (./4.tex
+Overfull \hbox (4.19211pt too wide) in paragraph at lines 154--1
+\TU/TimesNewRoman(0)/m/n/14.4 файлах. Полный исходный код программы доступен по
+ адресу https://github.com/ 
+ []
+
+[15]
+Глава 4.
+! Undefined control sequence.
+<argument> ...tsize {18}{18}\bfseries \justifying 
+                                                  
+l.1 \chapter{ПРАКТИЧЕСКАЯ РАБОТА № 4}
+                                     
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[16
+
+] [17]) (./reference.tex
+Overfull \hbox (25.26189pt too wide) in paragraph at lines 53--1
+[]\TU/TimesNewRoman(0)/m/n/14.4 Полный исходный код: https://github.com/ivanmak
+ovetskiy/spo/blob/master/spo-
+ []
+
+[18]
+! Undefined control sequence.
+<argument> ...tsize {18}{18}\bfseries \justifying 
+                                                  
+l.1 ...{\center{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (7.62286pt too wide) in paragraph at lines 9--10
+[]\TU/TimesNewRoman(0)/m/n/14.4 Справочник по командам процессора x86. [Электро
+нный ресурс]. URL:
+ []
+
+) [19
+
+] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
- )
-(\end occurred inside a group at level 1)
-
-### semi simple group (level 1) entered at line 17 (\begingroup)
-### bottom level 
+ ) 
 Here is how much of TeX's memory you used:
- 6349 strings out of 481030
- 153299 string characters out of 5927868
- 457884 words of memory out of 5000000
- 23265 multiletter control sequences out of 15000+600000
- 535070 words of font info for 56 fonts, out of 8000000 for 9000
+ 6358 strings out of 481030
+ 153452 string characters out of 5927868
+ 463895 words of memory out of 5000000
+ 23271 multiletter control sequences out of 15000+600000
+ 535078 words of font info for 57 fonts, out of 8000000 for 9000
  682 hyphenation exceptions out of 8191
- 43i,8n,67p,751b,372s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,14n,67p,1054b,280s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (5 pages).
+Output written on main.pdf (19 pages).
