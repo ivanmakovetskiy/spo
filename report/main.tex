@@ -1,0 +1,76 @@
+\documentclass[utf8x, 14pt, oneside, a4paper]{report}
+
+\usepackage[T2A]{fontenc}
+
+\usepackage[dvips]{graphicx} 
+
+\usepackage[english,russian]{babel} 
+
+\usepackage{enumitem}
+
+\usepackage{extsizes}
+
+\usepackage{fontspec} 
+
+\usepackage{indentfirst}
+
+\usepackage{fancyvrb}
+
+\fvset{tabsize=4}
+
+\usepackage{longtable}
+
+\usepackage{titlesec}
+
+\usepackage[left=3.0cm,right=10mm,top=2.0cm,bottom=20mm,nohead,nofoot,bindingoffset=0cm]{geometry}
+
+\linespread{1.5}
+
+\setcounter{secnumdepth}{5}
+
+\setcounter{tocdepth}{4}
+
+\setlength{\parindent}{1.25cm}
+
+\setlist{noitemsep, labelsep=1em, itemindent=1.25cm, fullwidth}
+
+\graphicspath{{images/}}
+
+\titleformat{\chapter}{\Large\fontsize{18}{18}\bfseries\justifying}{\thechapter}{1.25 cm}{}
+
+\titleformat{\section}{\large\fontsize{16}{16}\bfseries}{\thesection}{1.25 cm}{}
+
+\titleformat{\subsection}{\normalfont\fontsize{14}{15}\bfseries}{\thesubsection}{1.25 cm}{}
+
+\titleformat{\subsubsection}{\normalfont\fontsize{14}{15}\bfseries}{\thesubsubsection}{1.25 cm}{}
+
+\titleformat{\paragraph}{\normalfont\fontsize{14}{15}\bfseries}{\theparagraph}{1.25 cm}{}
+
+\titleformat{\subparagraph}{\normalfont\fontsize{14}{15}\bfseries}{\thesubparagraph}{1.25 cm}{}
+
+\titlespacing{\chapter}{\parindent}{0mm}{10mm}
+
+\titlespacing{\section}{\parindent}{15mm}{10mm}
+
+\titlespacing{\subsection}{\parindent}{15pt}{10mm}
+
+\titlespacing{\subsubsection}{\parindent}{15pt}{10mm}
+
+\titlespacing{\paragraph}{\parindent}{15pt}{10mm}
+
+\titlespacing{\subparagraph}{\parindent}{15pt}{10mm}
+
+\setmainfont{Times New Roman}
+
+\begin{document}
+	\input{titulus}
+		\setcounter{page}{2} 
+			\renewcommand{\contentsname}{\hfill\bfseries\Large СОДЕРЖАНИЕ\hfill}   
+			\renewcommand{\cftaftertoctitle}{\hfill}
+	\tableofcontents
+	\input{1}
+	\input{2}
+	\input{3}
+	\input{4}
+\end{document}
+

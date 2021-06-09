@@ -1,0 +1,5 @@
+\babel@toc {russian}{}
+\contentsline {chapter}{\numberline {1}ПРАКТИЧЕСКАЯ РАБОТА № 1}{3}%
+\contentsline {section}{\numberline {1.1}Тема}{3}%
+\contentsline {section}{\numberline {1.2}Задание}{3}%
+\contentsline {section}{\numberline {1.3}Ход выполнения работы}{3}%
